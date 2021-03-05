@@ -8,7 +8,7 @@ const {
   validateLoginUser,
   validateProfileUser,
 } = require("../joi_validation/User");
-
+const PAYLOAD_STRING = 'brigfohoufhuhfnouwegfohwef';
 dotenv.config();
 //Register new user
 router.post("/signup", async (req, res) => {
@@ -91,7 +91,7 @@ router.post("/login", async (req, res) => {
       email: user.email,
       name: user.name,
     },
-    process.env.PAYLOAD_STRING, {
+    PAYLOAD_STRING, {
       expiresIn: 60 * 15,
     }
   );
