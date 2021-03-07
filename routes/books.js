@@ -61,7 +61,7 @@ router.get("/get/", async (req, res) => {
       bookId,
       searchText
     } = req.query;
-    if (category) {
+    if (category != "null") {
       if (category === "All") {
         console.log("search insearch text");
         const getAdv = await Book.find({});
@@ -81,19 +81,19 @@ router.get("/get/", async (req, res) => {
           res.send(getAdv.filter(book => book.language === language));
         }
       }
-    } else if (authorId) {
+    } else if (authorId != "null") {
       console.log("searched in author id");
       const getAdv = await Book.find({
         authorId: authorId,
       });
       res.send(getAdv);
-    } else if (bookId) {
+    } else if (bookId != "null") {
       console.log("searched in book id");
       const getAdv = await Book.find({
         _id: bookId,
       });
       res.send(getAdv);
-    } else if (searchText) {
+    } else if (searchText != "null") {
       const regex = new RegExp(escapeRegex(searchText), 'gi');
       console.log("search insearch text " + regex);
       const getAdv1 = await Book.find({
